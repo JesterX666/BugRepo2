@@ -1,0 +1,68 @@
+{
+  "controlPlacements": [
+    {
+      "controlName": "Extension2.MyCommand",
+      "parent": {
+        "legacyParentId": {
+          "guid": "d309f791-903f-11d0-9efc-00a0c911004f",
+          "id": 415
+        },
+        "priority": 0
+      }
+    }
+  ],
+  "toolWindows": [
+    {
+      "identifier": "Extension2.MyToolWindow",
+      "placement": "DocumentWell",
+      "dockDirection": "None",
+      "allowAutoCreation": true,
+      "serviceMoniker": "Extension2.GeneratedToolWindowProvider;1.0"
+    }
+  ],
+  "commandSets": [
+    {
+      "name": "Extension2.ExtensionEntrypoint",
+      "serviceMoniker": {
+        "name": "Extension2.ExtensionEntrypointCommandSet",
+        "version": "1.0"
+      },
+      "commands": [
+        {
+          "tooltipText": "%MyToolWindowCommand.DisplayName%",
+          "flags": "None",
+          "name": "Extension2.MyCommand",
+          "displayName": "%MyToolWindowCommand.DisplayName%",
+          "contextProviderName": "Editor,Shell"
+        }
+      ],
+      "dynamicCommandAnchors": []
+    }
+  ],
+  "services": [
+    {
+      "host": "dotnetExtensibility",
+      "name": "Extension2.ExtensionEntrypointCommandSet",
+      "serviceBaseDirectory": ".",
+      "serviceAudience": "Local | RemoteExclusiveClient",
+      "version": "1.0",
+      "entryPoint": {
+        "assemblyPath": "Extension2.dll",
+        "fullClassName": "Extension2.ExtensionEntrypoint"
+      },
+      "allowHostingInProcess": false
+    },
+    {
+      "host": "dotnetExtensibility",
+      "name": "Extension2.GeneratedToolWindowProvider",
+      "serviceBaseDirectory": ".",
+      "serviceAudience": "Local | RemoteExclusiveClient",
+      "version": "1.0",
+      "entryPoint": {
+        "assemblyPath": "Extension2.dll",
+        "fullClassName": "Extension2.ExtensionEntrypoint"
+      },
+      "allowHostingInProcess": false
+    }
+  ]
+}
